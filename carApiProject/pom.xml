@@ -60,7 +60,13 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <distributionManagement>
+        <repository>
+            <id>project-repo</id>
+            <name>Project Repository</name>
+            <url>file://C:/repositoryProject</url>
+        </repository>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
