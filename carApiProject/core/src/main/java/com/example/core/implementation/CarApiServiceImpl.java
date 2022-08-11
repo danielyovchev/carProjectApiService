@@ -1,5 +1,6 @@
 package com.example.core.implementation;
 
+import com.example.api.feign.ApiFeignClient;
 import com.example.api.model.CarApiResponse;
 import com.example.core.exception.CarNotFoundException;
 import com.example.core.interfaces.CarApiService;
@@ -12,13 +13,16 @@ import java.util.Objects;
 @Service
 public class CarApiServiceImpl implements CarApiService {
     private final RestTemplateProvider restTemplateProvider;
+    private final ApiFeignClient apiFeignClient;
 
-    public CarApiServiceImpl(RestTemplateProvider restTemplateProvider) {
+    public CarApiServiceImpl(RestTemplateProvider restTemplateProvider, ApiFeignClient apiFeignClient) {
         this.restTemplateProvider = restTemplateProvider;
+        this.apiFeignClient = apiFeignClient;
     }
 
     @Override
     public CarApiResponse getCar(String vin) {
+        final String feignVin = apiFeignClient.getVin(vin);
         final String url = "https://auto.dev/api/vin/"+vin+"?apikey=ZrQEPSkKZGFuaWVseW92Y2hldkBnbWFpbC5jb20=";
         Root root = Objects.requireNonNull(restTemplateProvider.getRestTemplate().getForObject(url, Root.class));
         final double convertParam = 235.214;
