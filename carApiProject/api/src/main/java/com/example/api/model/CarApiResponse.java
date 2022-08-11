@@ -7,9 +7,16 @@ import lombok.ToString;
 
 @Getter @Setter @Builder @ToString
 public class CarApiResponse {
+    private String vin;
     private String make;
     private String model;
+    private int year;
+    private String fuel;
+    private double economy;
     private int displacement;
     private int horsepower;
-    private String colour;
+    private int torque;
+    private String transmission;
+    private int gears;
+    private String drivenWheels;
 }

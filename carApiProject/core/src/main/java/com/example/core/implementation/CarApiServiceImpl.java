@@ -21,12 +21,21 @@ public class CarApiServiceImpl implements CarApiService {
     public CarApiResponse getCar(String vin) {
         final String url = "https://auto.dev/api/vin/"+vin+"?apikey=ZrQEPSkKZGFuaWVseW92Y2hldkBnbWFpbC5jb20=";
         Root root = Objects.requireNonNull(restTemplateProvider.getRestTemplate().getForObject(url, Root.class));
+        final double convertParam = 235.214;
         try {
-            return CarApiResponse.builder().make(root.make.name)
+            return CarApiResponse.builder()
+                    .vin(vin)
+                    .make(root.make.name)
                     .model(root.model.name)
+                    .year(root.years.get(0).year)
+                    .fuel(root.engine.fuelType)
+                    .economy((Double.parseDouble((root.mpg.city))+Double.parseDouble(root.mpg.highway))/convertParam)
                     .horsepower(root.engine.horsepower)
-                    .colour(root.colors.get(1).options.get(1).name)
                     .displacement(root.engine.displacement)
+                    .torque(root.engine.torque)
+                    .transmission(root.transmission.transmissionType)
+                    .gears(Integer.parseInt(root.transmission.numberOfSpeeds))
+                    .drivenWheels(root.drivenWheels)
                     .build();
         }
         catch (Exception e){
