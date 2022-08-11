@@ -1,7 +1,9 @@
 package com.example.data.externalmodel;
 
-import java.util.ArrayList;
+import lombok.Getter;
 
+import java.util.ArrayList;
+@Getter
 public class Option {
     public String category;
     public ArrayList<Option> options;

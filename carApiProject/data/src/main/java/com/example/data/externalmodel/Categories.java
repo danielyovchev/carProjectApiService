@@ -1,5 +1,8 @@
 package com.example.data.externalmodel;
 
+import lombok.Getter;
+
+@Getter
 public class Categories {
     public String primaryBodyType;
     public String market;

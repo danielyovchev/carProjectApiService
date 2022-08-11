@@ -1,5 +1,8 @@
 package com.example.data.externalmodel;
 
+import lombok.Getter;
+
+@Getter
 public class Transmission {
     public String id;
     public String name;
