@@ -2,10 +2,12 @@ package com.example.core.implementation;
 
 import com.example.api.feign.ApiFeignClient;
 import com.example.api.model.CarApiResponse;
+import com.example.api.model.CarApiResponseModel;
 import com.example.core.exception.CarNotFoundException;
 import com.example.core.interfaces.CarApiService;
 import com.example.core.interfaces.RestTemplateProvider;
 import com.example.data.externalmodel.Root;
+import org.apache.el.stream.Stream;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -21,13 +23,12 @@ public class CarApiServiceImpl implements CarApiService {
     }
 
     @Override
-    public CarApiResponse getCar(String vin) {
-        final String feignVin = apiFeignClient.getVin(vin);
+    public CarApiResponseModel getCar(String vin) {
         final String url = "https://auto.dev/api/vin/"+vin+"?apikey=ZrQEPSkKZGFuaWVseW92Y2hldkBnbWFpbC5jb20=";
         Root root = Objects.requireNonNull(restTemplateProvider.getRestTemplate().getForObject(url, Root.class));
         final double convertParam = 235.214;
         try {
-            return CarApiResponse.builder()
+            return CarApiResponseModel.builder()
                     .vin(vin)
                     .make(root.make.name)
                     .model(root.model.name)

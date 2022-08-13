@@ -1,6 +1,7 @@
 package com.example.rest.controller;
 
 import com.example.api.model.CarApiResponse;
+import com.example.api.model.CarApiResponseModel;
 import com.example.core.interfaces.CarApiService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,7 @@ public class ApiController {
     }
 
     @GetMapping("/carInfo")
-    public CarApiResponse getCar(@RequestParam String vin){
+    public CarApiResponseModel getCar(@RequestParam String vin){
         return carApiService.getCar(vin);
     }
 }
