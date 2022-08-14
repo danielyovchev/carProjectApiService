@@ -1,6 +1,5 @@
 package com.example.core.implementation;
 
-import com.example.api.feign.ApiFeignClient;
 import com.example.api.model.CarApiResponse;
 import com.example.api.model.CarApiResponseModel;
 import com.example.core.exception.CarNotFoundException;
@@ -15,11 +14,9 @@ import java.util.Objects;
 @Service
 public class CarApiServiceImpl implements CarApiService {
     private final RestTemplateProvider restTemplateProvider;
-    private final ApiFeignClient apiFeignClient;
 
-    public CarApiServiceImpl(RestTemplateProvider restTemplateProvider, ApiFeignClient apiFeignClient) {
+    public CarApiServiceImpl(RestTemplateProvider restTemplateProvider) {
         this.restTemplateProvider = restTemplateProvider;
-        this.apiFeignClient = apiFeignClient;
     }
 
     @Override
