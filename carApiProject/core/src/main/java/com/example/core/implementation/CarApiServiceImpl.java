@@ -31,7 +31,7 @@ public class CarApiServiceImpl implements CarApiService {
                     .model(root.model.name)
                     .year(root.years.get(0).year)
                     .fuel(root.engine.fuelType)
-                    .economy((Double.parseDouble((root.mpg.city))+Double.parseDouble(root.mpg.highway))/convertParam)
+                    .economy((convertParam/Double.parseDouble((root.mpg.city))+convertParam/Double.parseDouble(root.mpg.highway))/2)
                     .horsepower(root.engine.horsepower)
                     .displacement(root.engine.displacement)
                     .torque(root.engine.torque)
