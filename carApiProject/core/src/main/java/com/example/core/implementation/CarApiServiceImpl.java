@@ -8,6 +8,7 @@ import com.example.data.externalmodel.Root;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Random;
 
 @Service
 public class CarApiServiceImpl implements CarApiService {
@@ -23,19 +24,36 @@ public class CarApiServiceImpl implements CarApiService {
         Root root = Objects.requireNonNull(restTemplateProvider.getRestTemplate().getForObject(url, Root.class));
         final double convertParam = 235.214;
         try {
+            Double kml = (convertParam/Double.parseDouble(root.mpg.city)+convertParam/Double.parseDouble(root.mpg.highway))/2;
+            String transmissionType = root.transmission.transmissionType;
+            Integer gearsNum = Integer.parseInt(root.transmission.numberOfSpeeds);
+            String drivenWheels = root.drivenWheels;
+            if(root.mpg.city == null || root.mpg.highway == null){
+                kml = new Random().nextDouble() * (15.0 - 7.0) + 7.0;
+            }
+            if(transmissionType.isEmpty()){
+                transmissionType = "Manual";
+            }
+            if(gearsNum == null){
+                gearsNum = 6;
+
+            }
+            if(drivenWheels.isEmpty()){
+                drivenWheels = "rear wheel drive";
+            }
             return CarApiResponseModel.builder()
                     .vin(vin)
                     .make(root.make.name)
                     .model(root.model.name)
-                    .year(root.years.get(0).year)
+                    .year(root.years.get(1).year)
                     .fuel(root.engine.fuelType)
-                    .economy((convertParam/Double.parseDouble((root.mpg.city))+convertParam/Double.parseDouble(root.mpg.highway))/2)
+                    .economy(kml)
                     .horsepower(root.engine.horsepower)
                     .displacement(root.engine.displacement)
                     .torque(root.engine.torque)
-                    .transmission(root.transmission.transmissionType)
-                    .gears(Integer.parseInt(root.transmission.numberOfSpeeds))
-                    .drivenWheels(root.drivenWheels)
+                    .transmission(transmissionType)
+                    .gears(gearsNum)
+                    .drivenWheels(drivenWheels)
                     .build();
         }
         catch (Exception e){

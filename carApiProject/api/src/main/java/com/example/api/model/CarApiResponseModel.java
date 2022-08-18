@@ -10,13 +10,13 @@ public class CarApiResponseModel {
     private String vin;
     private String make;
     private String model;
-    private int year;
+    private Integer year;
     private String fuel;
-    private double economy;
-    private int displacement;
-    private int horsepower;
-    private int torque;
+    private Double economy;
+    private Integer displacement;
+    private Integer horsepower;
+    private Integer torque;
     private String transmission;
-    private int gears;
+    private Integer gears;
     private String drivenWheels;
 }
