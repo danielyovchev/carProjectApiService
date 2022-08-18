@@ -6,6 +6,6 @@ import lombok.Setter;
 
 import java.util.List;
 @Getter @Setter @Builder
-public class CarApiResponse {
+public class CarApiResponseList {
     private List<CarApiResponseModel> carApiResponseModelList;
 }

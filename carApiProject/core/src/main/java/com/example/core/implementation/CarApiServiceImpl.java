@@ -1,12 +1,10 @@
 package com.example.core.implementation;
 
-import com.example.api.model.CarApiResponse;
 import com.example.api.model.CarApiResponseModel;
 import com.example.core.exception.CarNotFoundException;
 import com.example.core.interfaces.CarApiService;
 import com.example.core.interfaces.RestTemplateProvider;
 import com.example.data.externalmodel.Root;
-import org.apache.el.stream.Stream;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;

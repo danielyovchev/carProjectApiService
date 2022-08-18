@@ -1,6 +1,5 @@
 package com.example.rest.controller;
 
-import com.example.api.model.CarApiResponse;
 import com.example.api.model.CarApiResponseModel;
 import com.example.core.interfaces.CarApiService;
 import org.springframework.web.bind.annotation.GetMapping;
