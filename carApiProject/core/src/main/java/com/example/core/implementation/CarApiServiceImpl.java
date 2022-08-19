@@ -8,7 +8,6 @@ import com.example.data.externalmodel.Root;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
-import java.util.Random;
 
 @Service
 public class CarApiServiceImpl implements CarApiService {
