@@ -11,6 +11,7 @@ import java.util.Objects;
 
 @Service
 public class CarApiProcessorCore implements CarApiProcessor {
+    // building response model from api by using restTemplate and POJOs for data model of api
     private final RestTemplateProvider restTemplateProvider;
 
     public CarApiProcessorCore(RestTemplateProvider restTemplateProvider) {
