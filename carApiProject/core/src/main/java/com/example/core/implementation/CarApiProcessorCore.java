@@ -2,7 +2,7 @@ package com.example.core.implementation;
 
 import com.example.api.model.CarApiResponseModel;
 import com.example.core.exception.CarNotFoundException;
-import com.example.core.interfaces.CarApiService;
+import com.example.core.interfaces.CarApiProcessor;
 import com.example.core.interfaces.RestTemplateProvider;
 import com.example.data.externalmodel.Root;
 import org.springframework.stereotype.Service;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 
 @Service
-public class CarApiServiceImpl implements CarApiService {
+public class CarApiProcessorCore implements CarApiProcessor {
     private final RestTemplateProvider restTemplateProvider;
 
-    public CarApiServiceImpl(RestTemplateProvider restTemplateProvider) {
+    public CarApiProcessorCore(RestTemplateProvider restTemplateProvider) {
         this.restTemplateProvider = restTemplateProvider;
     }
 
